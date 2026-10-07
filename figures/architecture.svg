@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 470" width="680" height="470" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <rect x="0" y="0" width="680" height="470" fill="#ffffff"/>
+  <text x="24" y="30" font-size="16" font-weight="700" fill="#1a1a1a">CareerSim 系统架构：四层 + 两条取证支线</text>
+
+  <!-- LLM -->
+  <rect x="24" y="48" width="632" height="46" rx="8" fill="#eef4ff" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="340" y="70" font-size="13" font-weight="600" fill="#1a3a6a" text-anchor="middle">LLM Agent（deepseek-v4-flash，官方出费）</text>
+  <text x="340" y="87" font-size="11" fill="#4a6a9a" text-anchor="middle">读技能 / 调工具 / 提交动作　·　约 2400–2500 次调用 / 195–196 回合</text>
+
+  <!-- submission -->
+  <rect x="24" y="106" width="632" height="96" rx="8" fill="#ffffff" stroke="#333" stroke-width="1.5"/>
+  <text x="340" y="126" font-size="12" font-weight="700" fill="#1a1a1a" text-anchor="middle">提交包 solution/　（287,406 B ≤ 2MB　·　常驻层 58,535 字符 / 60,000 硬墙）</text>
+
+  <rect x="44" y="136" width="196" height="46" rx="6" fill="#f3f0ff" stroke="#7a5fd0" stroke-width="1.2"/>
+  <text x="142" y="155" font-size="11" font-weight="600" fill="#3a2a70" text-anchor="middle">manifest.json　mode=agent</text>
+  <text x="142" y="171" font-size="10" fill="#5a4a90" text-anchor="middle">team / name / instruction</text>
+
+  <rect x="252" y="136" width="200" height="46" rx="6" fill="#fff4e8" stroke="#d08a3a" stroke-width="1.2"/>
+  <text x="352" y="155" font-size="11" font-weight="600" fill="#7a4a10" text-anchor="middle">★ 常驻层（每步都在上下文）</text>
+  <text x="352" y="171" font-size="10" fill="#8a6a30" text-anchor="middle">cor-career + cor-window</text>
+
+  <rect x="464" y="136" width="176" height="46" rx="6" fill="#f0f8f0" stroke="#4a9a5a" stroke-width="1.2"/>
+  <text x="552" y="155" font-size="11" font-weight="600" fill="#1a5a2a" text-anchor="middle">〔按需〕references/ 19 个</text>
+  <text x="552" y="171" font-size="10" fill="#3a7a4a" text-anchor="middle">命中才读 · 一次一张</text>
+
+  <rect x="44" y="186" width="164" height="30" rx="6" fill="#fafafa" stroke="#bbb" stroke-width="1"/>
+  <text x="126" y="205" font-size="10" fill="#666" text-anchor="middle">design/*.md（不加载）</text>
+  <rect x="216" y="186" width="452" height="30" rx="6" fill="#fafafa" stroke="#bbb" stroke-width="1"/>
+  <text x="442" y="205" font-size="10" fill="#666" text-anchor="middle">过拟合暴露度 0% ／ 硬门禁 FAIL=0 WARN=0 ／ 官方 validate 3/3 ／ zip↔磁盘 31/31</text>
+
+  <!-- arrow -->
+  <path d="M340 202 L340 232" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker></defs>
+
+  <!-- engine -->
+  <rect x="24" y="234" width="632" height="86" rx="8" fill="#f7f7f7" stroke="#666" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="340" y="256" font-size="12" font-weight="700" fill="#1a1a1a" text-anchor="middle">引擎 career_emulator（闭卷）</text>
+  <text x="60" y="278" font-size="10.5" fill="#333">可见 9 字段：H / D / S / N / O / W / Level / Energy / Dur</text>
+  <text x="60" y="294" font-size="10.5" fill="#333">隐藏：hidden_risk（Agent 读不到）</text>
+  <text x="330" y="278" font-size="10.5" fill="#333">72K 决策点：每季 3 Energy（清零不累积）</text>
+  <text x="330" y="294" font-size="10.5" fill="#333">晋升门槛 L1→L7 ／ cap = int(门槛×1.2) ／ 判定取 W 月首帧</text>
+  <text x="60" y="312" font-size="10.5" fill="#a33">判 0 红线：mode 错 / 事件后果查表 / 写死答案 / 读隐藏状态</text>
+
+  <!-- replay -->
+  <path d="M340 320 L340 348" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="24" y="350" width="632" height="52" rx="8" fill="#fff0f0" stroke="#c06060" stroke-width="1.5"/>
+  <text x="340" y="371" font-size="12" font-weight="700" fill="#7a2020" text-anchor="middle">战报镜像 replay/ → events-*.jsonl</text>
+  <text x="340" y="390" font-size="10.5" fill="#8a3030" text-anchor="middle">离线取证（零成本）：jsonl → 引擎自己的计分器 → 分数 ／ 影子回放逐门消融 ／ 挂窗根因分析</text>
+
+  <!-- footer -->
+  <rect x="24" y="414" width="632" height="42" rx="8" fill="#f0f8ff" stroke="#4a8ab0" stroke-width="1.2"/>
+  <text x="340" y="432" font-size="11" font-weight="600" fill="#1a4a6a" text-anchor="middle">跑一局（¥4.5–9 / 30–47 分钟）是验收　·　离线取证才是研究</text>
+  <text x="340" y="449" font-size="10" fill="#4a7a9a" text-anchor="middle">本仓库的方法论重心：机制层 + 通用规划层；内容层（事件名/选项原文/精确 Δ）恒为 0</text>
+</svg>

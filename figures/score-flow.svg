@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <rect x="0" y="0" width="680" height="420" fill="#ffffff"/>
+  <text x="24" y="30" font-size="16" font-weight="700" fill="#1a1a1a">评分链路与推导上界 79.03</text>
+
+  <!-- flow -->
+  <rect x="24" y="48" width="150" height="44" rx="6" fill="#f7f7f7" stroke="#666"/>
+  <text x="99" y="65" font-size="11" font-weight="600" fill="#1a1a1a" text-anchor="middle">终局原始值</text>
+  <text x="99" y="82" font-size="10" fill="#666" text-anchor="middle">S / O / N / H / D / W</text>
+
+  <path d="M174 70 Q196 70 214 70" stroke="#333" stroke-width="1.5" marker-end="url(#b)"/>
+  <defs><marker id="b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#333"/></marker></defs>
+
+  <rect x="216" y="48" width="150" height="44" rx="6" fill="#eef4ff" stroke="#4a7fd4"/>
+  <text x="291" y="65" font-size="11" font-weight="600" fill="#1a3a6a" text-anchor="middle">六维归一化</text>
+  <text x="291" y="82" font-size="10" fill="#4a6a9a" text-anchor="middle">各维独立线性映射到 [0,1]</text>
+
+  <path d="M366 70 Q388 70 406 70" stroke="#333" stroke-width="1.5" marker-end="url(#b)"/>
+  <rect x="408" y="48" width="150" height="44" rx="6" fill="#e6f0ff" stroke="#3a6fc4"/>
+  <text x="483" y="65" font-size="11" font-weight="600" fill="#10305a" text-anchor="middle">加权求和</text>
+  <text x="483" y="82" font-size="10" fill="#3a5a8a" text-anchor="middle">Σ(归一化 × 权重)</text>
+
+  <path d="M558 70 Q580 70 598 70" stroke="#333" stroke-width="1.5" marker-end="url(#b)"/>
+  <rect x="600" y="48" width="56" height="44" rx="6" fill="#fff0e8" stroke="#d08a3a"/>
+  <text x="628" y="76" font-size="12" font-weight="700" fill="#7a4a10" text-anchor="middle">×0.7</text>
+
+  <text x="628" y="112" font-size="9.5" fill="#666" text-anchor="middle">competition_partial</text>
+
+  <!-- weight table -->
+  <rect x="24" y="112" width="340" height="176" rx="8" fill="#ffffff" stroke="#ccc"/>
+  <text x="40" y="134" font-size="11.5" font-weight="700" fill="#1a1a1a">六维权重（真源 ending_score.py）</text>
+
+  <g font-size="10.5">
+    <rect x="40" y="144" width="300" height="21" fill="#dbe8ff"/>
+    <text x="50" y="159" fill="#1a1a1a">职级 level</text>
+    <text x="200" y="159" fill="#333" text-anchor="end">0</text><text x="216" y="159" fill="#333" text-anchor="end">30</text>
+    <text x="330" y="159" fill="#334" text-anchor="end">[0, 10]</text>
+
+    <rect x="40" y="166" width="300" height="21" fill="#f4f8ff"/>
+    <text x="50" y="181" fill="#1a1a1a">财富 wealth</text>
+    <text x="200" y="181" fill="#333" text-anchor="end">0</text><text x="216" y="181" fill="#333" text-anchor="end">20</text>
+    <text x="330" y="181" fill="#334" text-anchor="end">[0, 80]</text>
+
+    <rect x="40" y="188" width="300" height="21" fill="#dbe8ff"/>
+    <text x="50" y="203" fill="#1a1a1a">韧性 resilience</text>
+    <text x="200" y="203" fill="#333" text-anchor="end">0</text><text x="216" y="203" fill="#333" text-anchor="end">15</text>
+    <text x="330" y="203" fill="#334" text-anchor="end">[0, 20] = H+D</text>
+
+    <rect x="40" y="210" width="300" height="21" fill="#f4f8ff"/>
+    <text x="50" y="225" fill="#1a1a1a">专业 skill</text>
+    <text x="200" y="225" fill="#333" text-anchor="end">0</text><text x="216" y="225" fill="#333" text-anchor="end">15</text>
+    <text x="330" y="225" fill="#334" text-anchor="end">[0, 120]</text>
+
+    <rect x="40" y="232" width="300" height="21" fill="#dbe8ff"/>
+    <text x="50" y="247" fill="#1a1a1a">风控 risk_control</text>
+    <text x="200" y="247" fill="#333" text-anchor="end">0</text><text x="216" y="247" fill="#333" text-anchor="end">10</text>
+    <text x="330" y="247" fill="#334" text-anchor="end">[0, 10] 反向</text>
+
+    <rect x="40" y="254" width="300" height="21" fill="#f4f8ff"/>
+    <text x="50" y="269" fill="#1a1a1a">人脉 network</text>
+    <text x="200" y="269" fill="#333" text-anchor="end">0</text><text x="216" y="269" fill="#333" text-anchor="end">10</text>
+    <text x="330" y="269" fill="#334" text-anchor="end">[0, 60]</text>
+  </g>
+
+  <!-- grade -->
+  <rect x="380" y="112" width="276" height="176" rx="8" fill="#ffffff" stroke="#ccc"/>
+  <text x="396" y="134" font-size="11.5" font-weight="700" fill="#1a1a1a">等级线</text>
+  <g font-size="10.5">
+    <rect x="396" y="144" width="244" height="18" rx="3" fill="#c8e8c8"/><text x="406" y="157" fill="#1a5a2a">S ≥ 90</text>
+    <rect x="396" y="164" width="244" height="18" rx="3" fill="#e0f0e0"/><text x="406" y="177" fill="#2a6a3a">A ≥ 70</text>
+    <rect x="396" y="184" width="244" height="18" rx="3" fill="#efe8d0"/><text x="406" y="197" fill="#7a6a2a">B ≥ 60</text>
+    <rect x="396" y="204" width="244" height="18" rx="3" fill="#f0e8e0"/><text x="406" y="217" fill="#7a4a3a">C ≥ 50</text>
+    <rect x="396" y="224" width="244" height="18" rx="3" fill="#f0dfdf"/><text x="406" y="237" fill="#7a2a2a">D ≥ 30</text>
+    <rect x="396" y="244" width="244" height="18" rx="3" fill="#f0dfdf"/><text x="406" y="257" fill="#7a2a2a">E &lt; 30</text>
+  </g>
+
+  <!-- ceiling -->
+  <rect x="24" y="304" width="632" height="100" rx="8" fill="#fff6f0" stroke="#d08040" stroke-width="1.5"/>
+  <text x="40" y="326" font-size="11.5" font-weight="700" fill="#7a4020">为什么上界是 79.03（不是 100）</text>
+  <text x="40" y="346" font-size="10.5" fill="#8a5030">① L7 不可达：S 峰值只到 163 &lt; 门槛 170　② L5 段 N 封顶 54 &lt; 60 ⇒ 必丢 1.0</text>
+  <text x="40" y="364" font-size="10.5" fill="#8a5030">③ risk_control 只能靠压 hidden_risk（不可见，只能保守估计）⇒ 给带不给点</text>
+  <text x="40" y="386" font-size="11" font-weight="600" fill="#5a3010">历史最好 78.96 ↔ 上界 79.03 只差 0.07 ⇒ dev 侧已摸到天花板，重心从抠分转向「别被判 0」</text>
+</svg>

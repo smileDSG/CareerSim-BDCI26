@@ -1,0 +1,35 @@
+# 本仓库是纯文档/复盘仓库，策略包已按 LICENSE 方式收录。
+# 以下只是防止误提交大文件与临时产物。
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# 例外：本次提交的策略包 zip 是刻意收录的交付件
+!submissions/*.zip
+
+# 跑局产物（一局几百 MB）
+.career_sim_runner/
+logs/
+*.jsonl
+score_report.json
+timeline.csv
+__hardgate_*.txt
+__*audit*.txt
+
+# 本地环境 / 私密配置
+.env
+.env.local
+_cred*
+*.pem
+
+# 备份与临时
+*.bak
+*.orig
+*.swp
+~$*
+Thumbs.db
+.DS_Store

@@ -38,8 +38,8 @@ python tools/_overfit_fuzzy.py solution
 python tools/_overfit_scan_lines.py solution   # 逐行版 + 回显 dev 出处
 ```
 
-**这一层才是真正抓"改写型引用"的。** 逐字匹配对"少两个字"完全无感；8-gram 能看到
-`dev：向 Leader 争取以兼职形式参与「新项目」` 和 `包内：向 Leader 争取以兼职形式参与` 是同一条。
+**这一层才是真正抓"改写型引用"的。** 逐字匹配对"少两个字"完全无感；8-gram 能把
+「dev 语料」和「包内文本」的公共片段（≥N 字）找出来，并回显是哪条 dev 条目带来的。
 
 **期望**：`模糊层命中行：0`。
 
